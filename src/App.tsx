@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ButtonPage from './pages/ButtonPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Главная страница со списком */}
+        <Route path="/" element={<HomePage />} />
+        
+        {/* Страница конкретного компонента */}
+        <Route path="/button" element={<ButtonPage />} />
+        
+        {/* Можно добавить 404 страницу */}
+        <Route path="*" element={<div>404 - Страница не найдена</div>} />
+      </Routes>
+    </Router>
   );
 }
 
